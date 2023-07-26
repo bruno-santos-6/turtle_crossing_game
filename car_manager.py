@@ -1,9 +1,10 @@
 from turtle import Turtle
 from random import randint, choice
+from time import sleep
 
 COLORS = ["red", "orange", "yellow", "green", "blue", "purple"]
 STARTING_MOVE_DISTANCE = 5
-MOVE_INCREMENT = 10
+MOVE_INCREMENT = 5
 
 
 class CarManager(Turtle):
@@ -12,6 +13,7 @@ class CarManager(Turtle):
         super().__init__()
         self.hideturtle()
         self.all_cars = []
+        self.car_speed = STARTING_MOVE_DISTANCE
 
     def create_cars(self):
         random_number = randint(1, 6)
@@ -26,6 +28,8 @@ class CarManager(Turtle):
 
     def move_cars(self):
         for car in self.all_cars:
-            car.backward(STARTING_MOVE_DISTANCE)
+            car.backward(self.car_speed)
 
+    def level_up(self):
+        self.car_speed += MOVE_INCREMENT
 
